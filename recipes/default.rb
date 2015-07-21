@@ -7,16 +7,17 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe 'python'
 
 root = "/usr/lib/gmvault"
 
 python_virtualenv root do
-  owner "ubuntu"
-  group "ubuntu"
+  owner "root"
+  group "root"
   action :create
 end
 
 python_pip "gmvault" do
   virtualenv root
-  action :install, :upgrade
+  action [:install, :upgrade]
 end
