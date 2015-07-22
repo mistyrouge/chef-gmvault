@@ -45,6 +45,17 @@ Install gmvault on the node. Just include `gmvault` in your node's `run_list`:
 }
 ```
 
+#### gmvault::cron_users
+Include `gmvault::cron_users` in your node's `run_list` to have it run
+automatically every day.
+
+You will need to do the first run manually to complete the authentication.
+
+For each user:
+```json
+$ gmvault user@email.tld -d ~/email
+```
+
 Contributing
 ------------
 1. Fork the repository on Github
