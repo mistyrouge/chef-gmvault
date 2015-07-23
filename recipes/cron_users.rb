@@ -22,7 +22,7 @@ else
             day '*'
             user user['username']
             mailto user['email']
-            command "gmvault sync #{user['id']} -d ~/email"
+            command "gmvault sync #{user['email']} -d ~/email"
         end
 
         Chef::Log.warn("You will need to run gmvault manually for the first "\
