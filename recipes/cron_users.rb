@@ -19,9 +19,7 @@ else
 
         cron 'gmvault' do
             action :create
-            minute '40'
-            hour '*'
-            day '*'
+            time :daily
             user user['username']
             mailto user['email']
             command cli
