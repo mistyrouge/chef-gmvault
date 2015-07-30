@@ -5,4 +5,5 @@
 # Do whatever the fuck you want
 #
 
-default[:gmvault][:destination] = '~/email'
+default[:gmvault][:email_path] = '~/email'
+default[:gmvault][:install_dir] = '/usr/local/lib/gmvault'

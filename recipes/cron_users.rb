@@ -14,21 +14,22 @@ else
     search('users', 'groups:gmvault AND email:*') do |user|
 
         user['username'] ||= user['id']
-        dst = node[:gmvault][:destination]
+        dst = node[:gmvault][:email_path]
+        cli = "#{node[:gmvault][:install_dir]}/gmvault sync #{user['email']} -d #{dst}"
 
         cron 'gmvault' do
             action :create
-            minute '45'
-            hour '7'
+            minute '40'
+            hour '*'
             day '*'
             user user['username']
             mailto user['email']
-            command "gmvault sync #{user['email']} -d #{dst}"
+            command cli
         end
 
         Chef::Log.warn("You will need to run gmvault manually for the first "\
                        "time to authenticate yourself.\n"\
-                       "$ gmvault sync #{user['id']} -d #{dst}")
+                       "$ #{cli}")
 
       end
 end
