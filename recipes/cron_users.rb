@@ -15,7 +15,7 @@ else
 
         user['username'] ||= user['id']
         dst = node[:gmvault][:email_path]
-        cli = "#{node[:gmvault][:install_dir]}/gmvault sync #{user['email']} -d #{dst}"
+        cli = "/usr/local/bin/gmvault sync #{user['email']} -d #{dst}"
 
         cron 'gmvault' do
             action :create

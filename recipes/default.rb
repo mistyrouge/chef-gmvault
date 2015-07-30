@@ -7,23 +7,21 @@
 
 include_recipe 'python'
 
-root = "/usr/local/lib/gmvault"
-
 users_manage "gmvault" do
     action [ :remove, :create ]
 end
 
-python_virtualenv root do
+python_virtualenv node[:gmvault][:install_dir] do
     owner "root"
     group "gmvault"
     action :create
 end
 
 python_pip "gmvault" do
-    virtualenv root
+    virtualenv node[:gmvault][:install_dir]
     action [:install, :upgrade]
 end
 
 link '/usr/local/bin/gmvault' do
-    to "#{root}/bin/gmvault"
+    to "#{node[:gmvault][:install_dir]}/bin/gmvault"
 end
