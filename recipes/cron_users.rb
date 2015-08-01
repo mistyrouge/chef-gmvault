@@ -17,9 +17,9 @@ else
         dst = node[:gmvault][:email_path]
         cli = "/usr/local/bin/gmvault sync #{user['email']} -d #{dst}"
 
-        cron 'gmvault' do
+        cron_d "gmvault_#{user['username']}" do
             action :create
-            time :daily
+            predefined_value "@daily"
             user user['username']
             mailto user['email']
             command cli
