@@ -47,13 +47,14 @@ Install gmvault on the node. Just include `gmvault` in your node's `run_list`:
 
 #### gmvault::cron_users
 Include `gmvault::cron_users` in your node's `run_list` to have it run
-automatically every day.
+automatically every day. It will search for users in the databag users that are
+part of the group "gmvault" and have an email address.
 
 You will need to do the first run manually to complete the authentication.
 
 For each user:
 ```json
-$ gmvault user@email.tld -d ~/email
+$ gmvault user@email.tld -d /path/to/email_dir
 ```
 
 Contributing
